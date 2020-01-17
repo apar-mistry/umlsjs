@@ -5,6 +5,11 @@ import regeneratorRuntime from "regenerator-runtime";
 import parser from 'fast-xml-parser'
 import he from 'he'
 
+/**
+ * 
+ * @param {string} apikey - The API Key obtained from UMLS
+ * @returns {string} The ST token
+ */
 export const getSt = async apikey => {
   const tgt = await getTgt(apikey)
   const config = {
@@ -17,6 +22,11 @@ export const getSt = async apikey => {
   return response.data
 }
 
+/**
+ * 
+ * @param {string} apikey - The API Key obtained from UMLS
+ * @returns {string} The TGT token
+ */
 export const getTgt = async apikey => {
   if(getTgtFromCache())
     return getTgtFromCache()
