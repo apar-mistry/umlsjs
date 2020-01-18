@@ -2,12 +2,13 @@ import axios from 'axios';
 // This is required
 import regeneratorRuntime from "regenerator-runtime";
 import { getSt } from './authService'
-/*
-INPUTS:
-apiKey from UMLS
-url in the form /search/current
-params in the form {string: 'psoriasis vulgaris'}
-*/
+
+/**
+ * 
+ * @param {string} apikey apiKey from UMLS
+ * @param {string} url url in the form /search/current
+ * @param {object} params in the form {string: 'psoriasis vulgaris'}
+ */
 export const getService = async (apikey, url, params={}) => {
   const ticket = await getSt(apikey)
   const fullUrl = "https://uts-ws.nlm.nih.gov/rest" + url
@@ -23,6 +24,6 @@ export const getService = async (apikey, url, params={}) => {
   @See example in mock.generalService.spec.js
   */
   const response = await axios(config)
-  //const response = await axios.get(fullUrl, params, config)
+  // const response = await axios.get(fullUrl, params, config)
   return(response.data)
 }
